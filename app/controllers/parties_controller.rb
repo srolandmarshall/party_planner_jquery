@@ -8,7 +8,8 @@ class PartiesController < ApplicationController
 
   def show
     @party = Party.find(params[:id])
-    if @party.attendees.include?(current_user) || @party.host == current_user
+    @attendees = @party.attendees
+    if @attendees.include?(current_user) || @party.host == current_user
       @host = @party.host
       @dishes = @party.dishes
       @foods = @party.foods
@@ -26,6 +27,7 @@ class PartiesController < ApplicationController
     @users = Array.new(User.all)
     @users.delete(@user)
     @party = Party.new
+    @attendees = @party.attendees
   end
 
   def create
