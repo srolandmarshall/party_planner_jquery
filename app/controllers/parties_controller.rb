@@ -9,7 +9,7 @@ class PartiesController < ApplicationController
   def show
     @party = Party.find(params[:id])
     @attendees = @party.attendees
-    if @attendees.include?(current_user) || @party.host == current_user
+    if @party.attendees.include?(current_user) || @party.host == current_user
       @host = @party.host
       @dishes = @party.dishes
       @foods = @party.foods
@@ -19,6 +19,10 @@ class PartiesController < ApplicationController
     else
       flash[:notice]="You're not invited to this party"
       redirect_to root_path
+    end
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @party, status: 200 }
     end
   end
 
