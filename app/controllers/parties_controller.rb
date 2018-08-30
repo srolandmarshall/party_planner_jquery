@@ -16,14 +16,15 @@ class PartiesController < ApplicationController
       # @desserts = @dishes.desserts
       # @entrees = @dishes.entrees
       # @apps = @dishes.apps
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @party, status: 200 }
+      end
     else
       flash[:notice]="You're not invited to this party"
       redirect_to root_path
     end
-    respond_to do |format|
-      format.html { render :show }
-      format.json { render json: @party, status: 200 }
-    end
+
   end
 
   def new

@@ -5,5 +5,5 @@ class PartySerializer < ActiveModel::Serializer
   has_and_belongs_to_many :attendees, class_name: 'User'
   has_many :dishes
   has_many :foods, through: :dishes
-  attributes :id
+  attributes :id, :name, :address, :host_id, :time
 end

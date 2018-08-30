@@ -8,7 +8,7 @@
 
 10.times{
   Party.create(name: Faker::Dune.planet, address:
-Faker::Simpsons.location, time: Faker::Time.between(DateTime.now - 1, DateTime.now))
+Faker::Simpsons.location, time: Faker::Time.between(DateTime.now, DateTime.now + 1))
   User.create(name: Faker::Name.name, email: Faker::Internet.email, password: "123456")
   Food.create(name: Faker::Food.dish, category: "appetizer")
   Food.create(name: Faker::Food.dish, category: "dessert")
