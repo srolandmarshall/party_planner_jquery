@@ -11,10 +11,9 @@ function showPage(){
     name = data.name
     attendees = data.attendees
     dishes = data.dishes //replace with getDishes()
-    host = data.host_id //replace with getHost()
     $("#party-name").text(name)
+    getHost();
     $("#edit-party").html(`<a href="./${id}/edit">Edit ${name}</a>`)
-    $("#host-name").append(host)
     listAttendees();
     renderDishes();//consoldate into getDishes()?
     $("#add-dish").html(`<a href="./${id}/dishes/new">Add a dish</a>`)
@@ -34,5 +33,15 @@ function renderDishes(){
     $("#dishes-list").append(`<li>${dishes[i].id}</li>`)
     // needs food lookup
   }
+}
+
+function getHost(){
+  hostID = party_json.host_id
+  $.getJSON(`/users/${hostID}`,function(data){
+      hostName = data.name
+      hostURL = `/users/${hostID}`
+        $("#host-name").append(`<a href="${hostURL}">${hostName}</a>`)
+    $
+  })
 }
 $(document).ready(showPage())
