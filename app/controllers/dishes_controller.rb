@@ -38,8 +38,8 @@ class DishesController < ApplicationController
   end
 
   def show
-    @party = Party.find(params[:id])
-    @dishes = @party.dishes
+    @dish = Dish.find(params[:id])
+    render json: @dish, status: 200 
   end
 
   def delete
