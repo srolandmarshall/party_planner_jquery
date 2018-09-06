@@ -1,5 +1,7 @@
 document.addEventListener("turbolinks:load", function() {
-  showPartyPage()
+  if (window.location.href.includes("/parties/")){
+    showPartyPage()
+  }
 })
 
 var partyName = ""

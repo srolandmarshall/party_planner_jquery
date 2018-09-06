@@ -12,12 +12,15 @@ class User < ActiveRecord::Base
     Array.new(Party.where(host_id: self.id))
   end
 
-  def all_parties
+  def attending_parties
     parties = []
     Party.all.each do |party|
       parties << party if party.attendees.include?(self)
     end
-    parties + hosted_parties
+  end
+
+  def all_parties
+    attending_parties + hosted_parties
   end
 
   def self.from_omniauth(auth)
