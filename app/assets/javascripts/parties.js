@@ -1,5 +1,5 @@
 document.addEventListener("turbolinks:load", function() {
-  showPage()
+  showPartyPage()
 })
 
 var partyName = ""
@@ -10,7 +10,7 @@ var dishes = []
 var hostID = null
 var i = 0;
 
-function showPage(){
+function showPartyPage(){
   $.getJSON(window.location.href,function(data){
     party_json = data
     partyID = data.id
