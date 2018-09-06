@@ -1,22 +1,29 @@
-var name = ""
-var id = null
+document.addEventListener("turbolinks:load", function() {
+  showPage()
+})
+
+var partyName = ""
+var partyID = null
 var party_json = {}
 var attendees = []
 var dishes = []
+var hostID = null
+var i = 0;
+
 function showPage(){
   $.getJSON(window.location.href,function(data){
-    var i = 0;
     party_json = data
-    id = data.id
-    name = data.name
-    attendees = data.attendees
+    partyID = data.id
+    partyName = data.name
     // host = getHost(data.host_id)
     dishes = data.dishes //replace with getDishes()
-    changeHost(data.host_id)
-    $("#edit-party").html(`<a href="./${id}/edit">Edit ${name}</a>`)
+    hostID = data.host_id
+    changeHost(hostID)
+    // if party is the host's party
+    $("#edit-party").html(`<a href="./${partyID}/edit">Edit ${partyName}</a>`)
     listAttendees();
     renderDishes();//consoldate into getDishes()?
-    $("#add-dish").html(`<a href="./${id}/dishes/new">Add a dish</a>`)
+    $("#add-dish").html(`<a href="./${partyID}/dishes/new">Add a dish</a>`)
   })
 }
 
@@ -44,8 +51,7 @@ function changeHost(hostID){
 
 function appendDish(dishID){
   var dishName="test"
-  $.getJSON(`/dishes/${dishID}`,function(data){
-    $("#dishes-list").append(`<li>${data.food.name} - ${data.user.name}</li>`)
+  $.getJSON(`/dishes/${dishID}`,function(dish){
+    $("#dishes-list").append(`<li>${dish.food.name} - ${dish.user.name}</li>`)
   })
 }
-$(document).ready(showPage())
