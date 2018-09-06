@@ -16,6 +16,7 @@ function setParties(){
     user = data
     hosted_parties = user.hosted_parties
     attended_parties = user.attended_parties
+    upcoming_parties = user.upcoming_parties
     hostedParties()
   })
 }
