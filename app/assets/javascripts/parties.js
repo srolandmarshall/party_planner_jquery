@@ -1,6 +1,14 @@
 document.addEventListener("turbolinks:load", function() {
   if (window.location.href.includes("/parties/")){
     showPartyPage()
+    $("#add-dish").click(function(){
+      event.preventDefault();
+      showDishAdd()
+    })
+    $("#cancel-dish").click(function(){
+      event.preventDefault();
+      hideDishAdd()
+    })
   }
 })
 
@@ -11,6 +19,7 @@ var attendees = []
 var dishes = []
 var hostID = null
 var i = 0;
+
 
 function showPartyPage(){
   $.getJSON(window.location.href,function(data){
@@ -25,8 +34,15 @@ function showPartyPage(){
     $("#edit-party").html(`<a href="./${partyID}/edit">Edit ${partyName}</a>`)
     listAttendees();
     renderDishes();//consoldate into getDishes()?
-    $("#add-dish").html(`<a href="./${partyID}/dishes/new">Add a dish</a>`)
+    $("#add-dish").html(`<a href="#" id="add-dish">Add a dish</a>`)
   })
+}
+function showDishAdd(){
+  var dish_source = document.getElementById("dish-add-form").innerHTML;
+  var dishTemp = Handlebars.compile(dish_source)
+  var context = {}
+  var add_dish_html = dishTemp(context)
+  $("#dish-add").html(add_dish_html)
 }
 
 function listAttendees(){
@@ -49,6 +65,10 @@ function changeHost(hostID){
       hostURL = `/users/${hostID}`
       $("#host-name").append(`<a href="${hostURL}">${hostName}</a>`)
   })
+}
+
+function hideDishAdd(){
+  $("#dish-add").hide()
 }
 
 function appendDish(dishID){
