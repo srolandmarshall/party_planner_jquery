@@ -12,8 +12,15 @@
 <script id="dish-add-form" type="text/x-handlebars-template">
   <div id="add-a-dish">
     <h2>Add a Dish</h2>
-    <input type="text" placeholder="Name"><br>
-    <select id="category" placeholder="Category">
-    <a href="#" id="cancel-dish">Cancel</a>
+    <div class="field"><input type="text" placeholder="Name"></div>  <p></p>
+    <div class="field">
+      <select id="category">
+        <option value="appetizer">Appetizer</option>
+        <option value="entree">Entree</option>
+        <option value="dessert">Dessert</option>
+      </select>
+    </div>  <p></p>
+    <div class="field"><input type="submit"></div>  <p></p>
+    <div class="cancel"><a href="#" id="cancel-dish">Cancel</a></div>
   </div>
 </script>
