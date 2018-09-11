@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require handlebars.js
+//= require party.js
 //= require_tree .
