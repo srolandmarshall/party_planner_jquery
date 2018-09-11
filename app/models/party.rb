@@ -38,4 +38,8 @@ class Party < ActiveRecord::Base
     self.update
   end
 
+  def host_name
+    self.host.name
+  end
+
 end

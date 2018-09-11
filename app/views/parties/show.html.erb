@@ -1,6 +1,5 @@
-<h1 id="party-name"></h1>
-<p id="edit-party"></p>
-<h2 id="host-name">Hosted by </h2>
+<div id="party-info"></div>
+
 <h2>Attendees:</h2>
 <ul id="attendees-list"></ul>
 
@@ -24,4 +23,10 @@
     <div></div>
     <div class="cancel"><a href="#" id="cancel-dish">Cancel</a></div>
   </div>
+</script>
+
+<script id="show-party" type="text/x-handlebars-template">
+  <h1 id="party-name">{{party_name}}</h1>
+  <a href="#" id="edit-party">Edit {{party_name}}</a>
+  <h2 id="host-name">Hosted by {{host_name}}</h2>
 </script>
