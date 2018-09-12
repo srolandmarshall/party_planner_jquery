@@ -45,9 +45,8 @@ function showPartyPage(){
     // if party is the host's party
 
     $("#edit-party").html(`<a href="./${partyID}/edit">Edit ${partyName}</a>`)
-    listAttendees();
-    renderDishes();
-    $("#add-dish").html(`<a href="#" id="add-dish">Add a dish</a>`)
+    // listAttendees();
+    // renderDishes();
   })
 }
 function showDishAdd(){

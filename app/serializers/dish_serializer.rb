@@ -1,5 +1,5 @@
 class DishSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :user_name
   belongs_to :user
   belongs_to :party
   belongs_to :food

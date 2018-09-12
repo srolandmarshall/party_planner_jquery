@@ -1,13 +1,5 @@
 <div id="party-info"></div>
 
-<h2>Attendees:</h2>
-<ul id="attendees-list"></ul>
-
-<h2>Dishes:</h2>
-<ul id="dishes-list"></ul>
-<p id="add-dish"></p>
-<div id="dish-add"></div>
-
 <script id="dish-add-form" type="text/x-handlebars-template">
   <div id="add-a-dish">
     <h2>Add a Dish</h2>
@@ -29,4 +21,17 @@
   <h1 id="party-name">{{partyName}}</h1>
   <a href="#" id="edit-party">Edit {{partyName}}</a>
   <h2 id="host-name">Hosted by {{hostName}}</h2>
+  <h2>Attendees:</h2>
+  <ul id="attendees-list">
+    {{#each attendees}}
+    <li>{{this.name}}</li>
+    {{/each}}
+  </ul>
+  <h2>Dishes:</h2>
+  <ul id="dishes-list">
+    {{#each dishes}}
+    <li>{{this.name}} - {{this.user_name}}</li>
+    {{/each}}
+  </ul>
+  <a href="#" id="add-dish">Add a dish</a>
 </script>
