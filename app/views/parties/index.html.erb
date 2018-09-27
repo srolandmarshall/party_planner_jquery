@@ -1,21 +1,29 @@
 <h1>Parties!</h1>
 
 <a href="/parties/new"><h4 id="host-party">Host a Party</h4></a>
-<div id="hosted-parties">
-  <h2>Hosted Parties</h2>
-  <ul id="hosted-party-list"></ul>
-</div>
-<div id="upcoming-parties">
-  <h2>Upcoming Parties</h2>
-  <ul id="upcoming-party-list"></ul>
-</div>
-<div id="attended-parties">
-  <h2>Past Parties</h2>
-  <ul id="attended-party-list"></ul>
-</div>
+
+<div id="index-parties"></div>
 
 <script id="index-template" type="text/x-handlebars-template">
 
-  <h1>Test {{title}}</h1>
-
+  <div id="hosted-parties">
+    <h2>Hosted Parties</h2>
+    <ul id="hosted-party-list">
+      {{#each [0]}}
+      <li><a href="">{{{link_party this}}}</a></li>
+      {{/each}}
+    </ul>
+  </div>
+  <div id="upcoming-parties">
+    <h2>Upcoming Parties</h2>
+    <ul id="upcoming-party-list">{{#each [1]}}
+    <li><a href="">{{{link_party this}}}</a></li>
+    {{/each}}</ul>
+  </div>
+  <div id="attended-parties">
+    <h2>Past Parties</h2>
+    <ul id="attended-party-list">{{#each [2]}}
+    <li><a href="">{{{link_party this}}}</a></li>
+    {{/each}}</ul>
+  </div>
 </script>

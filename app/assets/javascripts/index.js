@@ -5,9 +5,9 @@ var index_data = {}
 var index_template = $("#index-template").innerHTML
 
 document.addEventListener("turbolinks:load", function() {
-  setParties()
+  if (location.pathname == "/") 
+    {setParties()}
 })
-
 
 function setParties(){
   $.getJSON("/parties.json",function(data){
@@ -18,6 +18,12 @@ function setParties(){
     hostedParties()
     attendedParties()
     upcomingParties()
+    var arP = [hosted_parties,attended_parties,upcoming_parties]
+
+    index_source=document.getElementById("index-template").innerHTML;
+    var showIndex = Handlebars.compile(index_source)
+    index_html = showIndex(arP)
+    $("#index-parties").html(index_html)
   })
 }
 
@@ -28,10 +34,6 @@ function hostedParties(){
   }
   else{
     $("#hosted-parties").show()
-    hosted_parties.forEach(function(party){
-      $("#hosted-party-list").append(`<li><a href="/parties/${party.id}">${party.name}</a></li>`)
-    })
-
   }
 }
 
@@ -58,3 +60,12 @@ function attendedParties(){
     })
   }
 }
+
+Handlebars.registerHelper('link_party', function(object) {
+  var url = Handlebars.escapeExpression("/parties/"+object.id),
+      name = Handlebars.escapeExpression(object.name);
+
+  return new Handlebars.SafeString(
+    "<a href='" + url + "'>" + name + "</a>"
+  );
+});
