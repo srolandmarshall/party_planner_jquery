@@ -2,10 +2,6 @@ document.addEventListener("turbolinks:load", function() {
   if (window.location.href.includes("/parties/")){
     showPartyPage()
   }
-  $("#add-dish").click(function(event){
-    event.preventDefault();
-    alert("TEST")
-  })
   $("#cancel-dish").click(function(event){
     event.preventDefault();
     hideDishAdd()
@@ -83,7 +79,13 @@ function appendDish(dishID){
 }
 
 function submitDish(){
-  event.preventDefault()
-  var values = $(this).serialize();
-  debugger
+  $("#add-dish-form").submit(function(event){
+    event.preventDefault()
+    var values = $(this).serialize();
+    var posting = $.post(`/parties/${p.id}/dishes/new`,values)
+    posting.done(function(data){
+      var dish = data
+      $("#dishes-list").append(`<li>${dish.name} - ${dish.user.name}`)
+    })
+  })
 }
