@@ -39,7 +39,7 @@ class DishesController < ApplicationController
 
   def show
     @dish = Dish.find(params[:id])
-    render json: @dish, status: 200 
+    render json: @dish, status: 200
   end
 
   def delete

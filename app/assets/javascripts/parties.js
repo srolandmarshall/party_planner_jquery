@@ -1,15 +1,15 @@
 document.addEventListener("turbolinks:load", function() {
   if (window.location.href.includes("/parties/")){
     showPartyPage()
-    $("#add-dish").click(function(){
-      event.preventDefault();
-      showDishAdd()
-    })
-    $("#cancel-dish").click(function(){
-      event.preventDefault();
-      hideDishAdd()
-    })
   }
+  $("#add-dish").click(function(event){
+    event.preventDefault();
+    alert("TEST")
+  })
+  $("#cancel-dish").click(function(event){
+    event.preventDefault();
+    hideDishAdd()
+  })
 })
 
 var partyName = ""
@@ -44,7 +44,7 @@ function showPartyPage(){
 
     // if party is the host's party
 
-    $("#edit-party").html(`<a href="./${partyID}/edit">Edit ${partyName}</a>`)
+    $("#edit-party").html(`<a href="./${p.id}/edit">Edit ${partyName}</a>`)
     // listAttendees();
     // renderDishes();
   })
@@ -80,4 +80,10 @@ function appendDish(dishID){
   $.getJSON(`/dishes/${dishID}`,function(dish){
     $("#dishes-list").append(`<li>${dish.food.name} - ${dish.user.name}</li>`)
   })
+}
+
+function submitDish(){
+  event.preventDefault()
+  var values = $(this).serialize();
+  debugger
 }

@@ -1,21 +1,6 @@
 <div id="party-info"></div>
-
-<script id="dish-add-form" type="text/x-handlebars-template">
-  <div id="add-a-dish">
-    <h2>Add a Dish</h2>
-    <div class="field"><input type="text" placeholder="Name"></div>
-    <div class="field">
-      <select id="category">
-        <option value="appetizer">Appetizer</option>
-        <option value="entree">Entree</option>
-        <option value="dessert">Dessert</option>
-      </select>
-    </div>  <p></p>
-    <div class="field"><input type="submit"></div>
-    <div></div>
-    <div class="cancel"><a href="#" id="cancel-dish">Cancel</a></div>
-  </div>
-</script>
+<button onclick="showDishAdd()">Add a Dish</button>
+<div id="dish-add"></div>
 
 <script id="show-party" type="text/x-handlebars-template">
   <h1 id="party-name">{{partyName}}</h1>
@@ -33,5 +18,24 @@
     <li>{{this.name}} - {{this.user_name}}</li>
     {{/each}}
   </ul>
-  <a href="#" id="add-dish">Add a dish</a>
+</script>
+
+<script id="dish-add-form" type="text/x-handlebars-template">
+  <div id="add-a-dish">
+    <h2>Add a Dish</h2>
+    <form id="add-dish-form">
+      <div class="field"><input name="food_name" type="text" placeholder="Name"></div>
+      <div class="field">
+        <select name="category" id="category">
+          <option name="appetizer" value="appetizer">Appetizer</option>
+          <option name="entree" value="entree">Entree</option>
+          <option name="dessert" value="dessert">Dessert</option>
+        </select>
+      </div>
+      <p></p>
+      <div class="field"><input onclick="submitDish()" type="submit"></div>
+      <div></div>
+      <div class="cancel"><a href="#" id="cancel-dish">Cancel</a></div>
+    </form>
+  </div>
 </script>
