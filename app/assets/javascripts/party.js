@@ -8,3 +8,15 @@ class Party{
     this.hostName = hostName;
   }
 }
+
+Party.prototype.partyShortLink=function(){
+  return `/parties/${this.id}/`
+}
+
+Party.prototype.partyEditLink=function(){
+  return `<a href="${this.partyShortLink()}edit">Edit ${this.partyName}</a>`
+}
+
+Party.prototype.partyLink=function(){
+  return `<a href="${this.partyShortLink()}">${this.partyName}</a>`
+}
