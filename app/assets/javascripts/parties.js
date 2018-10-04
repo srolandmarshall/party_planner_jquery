@@ -30,6 +30,8 @@ function showPartyPage(){
     p.dishes = data.dishes
     p.hostID = data.host_id
     p.attendees = data.attendees
+    time = new Date(data.time)
+    p.date = time.toDateString() + " at " + time.toLocaleTimeString()
 
     show_source=document.getElementById("show-party").innerHTML;
     var showTemp = Handlebars.compile(show_source)

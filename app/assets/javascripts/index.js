@@ -5,7 +5,7 @@ var index_data = {}
 var index_template = $("#index-template").innerHTML
 
 document.addEventListener("turbolinks:load", function() {
-  if (location.pathname == "/") 
+  if (location.pathname == "/")
     {setParties()}
 })
 
