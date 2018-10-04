@@ -21,3 +21,7 @@ Party.prototype.partyEditLink=function(){
 Party.prototype.partyLink=function(){
   return `<a href="${this.partyShortLink()}">${this.partyName}</a>`
 }
+
+Party.prototype.partyTimeLink=function(){
+  return `<a href="${this.partyShortLink()}">${this.partyName} - ${this.date}</a>`
+}

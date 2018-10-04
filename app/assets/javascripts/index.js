@@ -64,8 +64,10 @@ function attendedParties(){
 Handlebars.registerHelper('link_party', function(object) {
   var url = Handlebars.escapeExpression("/parties/"+object.id),
       name = Handlebars.escapeExpression(object.name);
+      time = new Date(object.time)
+      date = time.toDateString() + " at " + time.toLocaleTimeString()
 
   return new Handlebars.SafeString(
-    "<a href='" + url + "'>" + name + "</a>"
+    "<a href='" + url + "'>" + name + "</a>" +" - " + date
   );
 });
