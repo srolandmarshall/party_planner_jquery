@@ -18,7 +18,7 @@ function setParties(){
     hostedParties()
     attendedParties()
     upcomingParties()
-    var arP = [hosted_parties,attended_parties,upcoming_parties]
+    var arP = [hosted_parties,upcoming_parties,attended_parties]
 
     index_source=document.getElementById("index-template").innerHTML;
     var showIndex = Handlebars.compile(index_source)
