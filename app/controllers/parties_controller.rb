@@ -71,7 +71,13 @@ class PartiesController < ApplicationController
     if @party.update(party_params)
       pp=params[:party]
       @party.attendees = set_attendees(pp[:attendees])
-      @party.time = DateTime.civil(pp["time(1i)"].to_i,pp["time(2i)"].to_i,pp["time(3i)"].to_i,pp["time(4i)"].to_i,pp["time(5i)"].to_i)
+      begin
+        @party.time = DateTime.civil(pp["time(1i)"].to_i,pp["time(2i)"].to_i,pp["time(3i)"].to_i,pp["time(4i)"].to_i,pp["time(5i)"].to_i)
+      rescue ArgumentError => e
+        flash[:error] = "INVALID DATE... try again"
+        redirect_to :back
+        return
+      end
       flash[:notice] = "Party Updated!"
       redirect_to party_path(@party)
     else

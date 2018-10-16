@@ -9,6 +9,7 @@ class Party < ActiveRecord::Base
   validates :name, presence: true
   validates :address, presence: true
   validates :time, :timeliness => {:on_or_after => lambda { Date.current }, :type => :date}
+  validates_datetime :time
 
 
   def display_time
