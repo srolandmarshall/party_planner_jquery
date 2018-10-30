@@ -8,17 +8,7 @@ document.addEventListener("turbolinks:load", function() {
   })
 })
 
-var partyName = ""
-var partyID = null
-var party_json = {}
-var attendees = []
-var dishes = []
-var hostID = null
-var hostName = ""
 var i = 0;
-var show_html = ""
-var show_source = ""
-
 var p = new Party
 
 function showPartyPage(){
@@ -43,7 +33,6 @@ function showPartyPage(){
     // if party is the host's party
     $("#edit-party").html(`${p.partyEditLink()}`)
     // listAttendees();
-    // renderDishes();
   })
 }
 function showDishAdd(){
@@ -55,28 +44,14 @@ function showDishAdd(){
 }
 
 function listAttendees(){
-  attendees = party_json.attendees
+  var attendees = p.attendees
   for (i = 0; i < attendees.length; i++){
     $("#attendees-list").append(`<li>${attendees[i].name}</li>`)
   }
 }
 
-function renderDishes(){
-  dishes = party_json.dishes
-  for (i = 0; i < dishes.length; i++){
-    appendDish(dishes[i].id)
-  }
-}
-
 function hideDishAdd(){
   $("#dish-add").hide()
-}
-
-function appendDish(dishID){
-  var dishName="test"
-  $.getJSON(`/dishes/${dishID}`,function(dish){
-    $("#dishes-list").append(`<li>${dish.food.name} - ${dish.user.name}</li>`)
-  })
 }
 
 function submitDish(){

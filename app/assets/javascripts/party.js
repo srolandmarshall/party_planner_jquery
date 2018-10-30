@@ -8,20 +8,16 @@ class Party{
     this.hostName = hostName;
     this.date = date
   }
-}
-
-Party.prototype.partyShortLink=function(){
-  return `/parties/${this.id}/`
-}
-
-Party.prototype.partyEditLink=function(){
-  return `<a href="${this.partyShortLink()}edit">Edit ${this.partyName}</a>`
-}
-
-Party.prototype.partyLink=function(){
-  return `<a href="${this.partyShortLink()}">${this.partyName}</a>`
-}
-
-Party.prototype.partyTimeLink=function(){
-  return `<a href="${this.partyShortLink()}">${this.partyName} - ${this.date}</a>`
+  partyShortLink(){
+    return `/parties/${this.id}/`
+  }
+  partyEditLink(){
+    return `<a href="${this.partyShortLink()}edit">Edit ${this.partyName}</a>`
+  }
+  partyLink(){
+    return `<a href="${this.partyShortLink()}">${this.partyName}</a>`
+  }
+  partyTimeLink(){
+    return `<a href="${this.partyShortLink()}">${this.partyName} - ${this.date}</a>`
+  }
 }
