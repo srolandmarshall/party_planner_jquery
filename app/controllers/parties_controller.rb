@@ -46,7 +46,8 @@ class PartiesController < ApplicationController
     pp=params[:party]
     @party.attendees = set_attendees(pp[:attendees])
     @party.host = @user
-    @party.time = DateTime.civil(pp["time(1i)"].to_i,pp["time(2i)"].to_i,pp["time(3i)"].to_i,pp["time(4i)"].to_i,pp["time(5i)"].to_i)
+    binding.pry
+    @party.time = DateTime.new(pp["time(1i)"].to_i,pp["time(2i)"].to_i,pp["time(3i)"].to_i,pp["time(4i)"].to_i,pp["time(5i)"].to_i)
     if @party.save
       flash[:notice] = "Party created"
       redirect_to root_path

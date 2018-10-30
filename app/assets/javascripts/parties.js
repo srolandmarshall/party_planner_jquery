@@ -20,6 +20,7 @@ function showPartyPage(){
     p.dishes = data.dishes
     p.hostID = data.host_id
     p.attendees = data.attendees
+
     time = new Date(data.time)
     p.date = time.toDateString() + " at " + time.toLocaleTimeString()
 
@@ -58,7 +59,7 @@ function submitDish(){
   $("#add-dish-form").submit(function(event){
     event.preventDefault()
     var values = $(this).serialize();
-    var posting = $.post(`/parties/${p.id}/dishes/new`,values)
+    var posting = $.post(`dishes/new`,values)
     posting.done(function(data){
       var dish = data
       $("#dishes-list").append(`<li>${dish.name} - ${dish.user.name}`)
